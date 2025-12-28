@@ -1,5 +1,5 @@
 # Michigrad
-
+A small, educational Autograd engine created by Dr. Joaquin Bogado for his course "Deep Learning Concepts for Text Generative AI".
 
 ![gatite](images/gatite.png)
 
