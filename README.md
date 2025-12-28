@@ -1,49 +1,52 @@
 # Michigrad
-Pequeño Autograd con fines educativos.
+
 
 ![gatite](images/gatite.png)
 
-Clon de Micrograd de [Andrej Karpathy](https://github.com/karpathy/micrograd) y básicamente comparte la misma base de código. Se mejoraron algunos aspectos de la visualización, orientados al curso de Nociones de Deep Learning para Inteligencia Artificial Generativa de Texto de [Purrfect AI](https://purrfectai.online)
+This is a clone of [Andrej Karpathy's micrograd](https://github.com/karpathy/micrograd) and basically shares the same codebase. Some visualization aspects have been improved and tailored for the *"Deep Learning Concepts for Text Generative AI"* course at [Purrfect AI](https://purrfectai.online).
 
-## Características
-Michigrad es un motor de cálculo de gradientes para valores escalares. Permite representar valores numéricos envolviendolos en objetos `Value`. Estos objetos soportan algunas de las operaciones análogas a las de los números, como la suma, la multiplicación, la división, la exponenciación, entre otras. Michigrad permite conocer el resultado de aplicar esas operaciones sobre los Values, lo que se conoce como forward pass, pero además permite generar el grafo de operaciones y dependencias necesarios para llegar al Value resultado. Este grafo puede usarse para calcular los gradientes de cualquier Value del grafo con respecto al resultado mediante el algoritmo de backpropagation que Michigrad también implenta. Esta información puede usarse para modificar los pesos W de una red neuronal respecto a una función de perdida L, con el objetivo de minimizar la función de perdida y entrenar la red neuronal.
+## Features
+Michigrad is a gradient calculation engine for scalar values. It allows you to represent numeric values by wrapping them in `Value` objects. These objects support operations analogous to standard numbers, such as addition, multiplication, division, and exponentiation, among others. 
 
-## Uso de Michigrad
+Michigrad allows you to compute the result of applying these operations to `Values` (known as the **forward pass**), but it also generates a graph of operations and dependencies required to reach the result. This graph can be used to calculate the gradients of any `Value` in the graph with respect to the result using the **backpropagation** algorithm, which Michigrad also implements. 
+
+This information can be used to modify the weights $W$ of a neural network with respect to a loss function $L$, with the goal of minimizing the loss and training the neural network.
+
+## Usage
 
 ```python
 import numpy as np
 from michigrad.engine import Value
 from michigrad.visualize import show_graph
 
-# Definición de los pesos
+# Weight definition
 np.random.seed(42)
 W0 = Value(np.random.random(), name='W₀')
 W1 = Value(np.random.random(), name='W₁')
 b = Value(np.random.random(), name='b')
-print(W0)  # imprime Value(data=0.3745401188473625, grad=0, name=W₀)
+print(W0)  # prints Value(data=0.3745401188473625, grad=0, name=W₀)
 
-# definición del dataset de entrenamiento
+# Training dataset definition
 x0 = Value(.5, name="x₀")
 x1 = Value(1., name="x₁")
 y = Value(2., name="y")
 
-# forward pass
+# Forward pass
 yhat = x0*W0 + x1*W1 + b
 yhat.name = "ŷ"
-print(yhat)  # imprime Value(data=1.8699783076450025, grad=0, name=ŷ)
+print(yhat)  # prints Value(data=1.8699783076450025, grad=0, name=ŷ)
 
 L = (y - yhat) ** 2
 L.name = "L"
-print(L)  # imprime Value(data=0.016905640482857615, grad=0, name=L)
+print(L)  # prints Value(data=0.016905640482857615, grad=0, name=L)
 
-# backward pass
+# Backward pass
 L.backward()
 
-print(L)  # imprime Value(data=0.016905640482857615, grad=1, name=L)
-print(W0)  # imprime Value(data=0.3745401188473625, grad=-0.1300216923549975, name=W₀)
+print(L)  # prints Value(data=0.016905640482857615, grad=1, name=L)
+print(W0)  # prints Value(data=0.3745401188473625, grad=-0.1300216923549975, name=W₀)
 
-# update de los pesos en la dirección contraria al gradiente de los W
+# Update weights in the opposite direction of the gradient
+# (Gradient Descent step implementation would go here)
 
-show_graph(L, rankdir="TB",format="png")
-```
-![graph](images/graph.png)
+show_graph(L, rankdir="TB", format="png")
