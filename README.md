@@ -39,8 +39,6 @@ Python **3.8+** is recommended.
     cd Michigrad-Autograd-Engine
 
 
-> PyTorch is used only for validation and gradient comparison.
-
 ---
 
 ## 💻 Quick Usage Guide
