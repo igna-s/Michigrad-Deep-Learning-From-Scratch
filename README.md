@@ -18,7 +18,7 @@
 
 This repository hosts educational projects designed to demystify modern Artificial Intelligence.
 By building core components from the ground up, we aim to understand what happens **under the hood**
-of libraries like PyTorch and architectures like Transformers.
+of libraries like Torch.
 
 ---
 
