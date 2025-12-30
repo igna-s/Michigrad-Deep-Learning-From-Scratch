@@ -1,30 +1,34 @@
-# Taller de LLMs
-Repositorio con datasets y ejemplos para el Taller de Large Language Models
-- Primera edición - Jun/2024 (Para LIFIA)
+#Teacher notes
 
-## Como usar este repositorio
-Hacé un fork a tu github para poder hacer Push Requests de manera cómoda. Además, así es más fácil dejar constancia de la autoría de las contribuciones. Luego, `git clone` a una copia local desde tu repo.
-```
-git clone git@github.com:<tu_usuario_de_github>/TallerLLMs.git
-```
-Si queres hacer algún aporte, no dudes en pedirme un Pull Request.
+# LLM Workshop
+Repository with datasets and examples for the Large Language Models Workshop  
+- First edition – Jun/2024 (For LIFIA)
 
-## Necesario durante el taller (Growing...)
-Aquí iremos detallando las herramientas necesarias para el taller, en cuanto a software y tools copadas que puedan sernos útiles.
+## How to use this repository
+Fork this repository to your GitHub account so you can make Push Requests comfortably. This also makes it easier to keep track of authorship for contributions. Then, `git clone` a local copy from your own repo.
+
+git clone git@github.com:<your_github_username>/Michigrad-Autograd-Engine.git
+
+
+
+If you want to contribute anything, don’t hesitate to send me a Pull Request.
+
+## Required during the workshop (Growing...)
+Here we will detail the tools needed for the workshop, in terms of software and cool tools that might be useful.
 
 ### Conda Environments
-Vamos a hacer uso extensivo de conda para no contaminar el Python del sistema con todas las librerías que vamos a instalar. Además, conda nos va a permitir trabajar con versiones específicas de algunas librerías, e incluso versiones de Python específicas.
+We will make extensive use of conda to avoid contaminating the system Python with all the libraries we are going to install. Additionally, conda will allow us to work with specific versions of certain libraries, and even specific Python versions.
 
-Mi sugerencia es instalar [Miniconda 3](https://docs.anaconda.com/miniconda/). Hay un [tutorial muy bueno en inglés](https://www.whiteboxml.com/blog/the-definitive-guide-to-python-virtual-environments-with-conda) y [uno mejorable en castellano](https://github.com/jwackito/conda-environments-tutorial/blob/main/Conda%20Environments.md) (se aceptan pull requests) con todo lo que van a necesitar saber sobre instalar, crear y administrar conda virtual envs.
+My suggestion is to install [Miniconda 3](https://docs.anaconda.com/miniconda/). There is a [very good tutorial in English](https://www.whiteboxml.com/blog/the-definitive-guide-to-python-virtual-environments-with-conda) and a [somewhat improvable one in Spanish](https://github.com/jwackito/conda-environments-tutorial/blob/main/Conda%20Environments.md) (pull requests are welcome) covering everything you need to know about installing, creating, and managing conda virtual environments.
 
-### Jupyter Hub/Lab (opción 1)
-[JupyterHub](https://jupyter.org/hub) es una versión multiusuario de los Jupyter Notebooks. Por si no conoces lo Jupyter Notebooks, básicamente es una consola interactiva de Python que funciona desde el navegador. JupyterHub tiene además la posibilidad de correr los notebooks usando diferentes kernels (una instancia de python instalada en un conda env, con una serie de librerías instaladas). Trabaja a nivel de celdas y permite editar y ejecutar secciones pequeñas de código de manera cómoda. El Lab además permite crear proyectos y administrar kernels de manera cómoda.
+### Jupyter Hub/Lab (option 1)
+[JupyterHub](https://jupyter.org/hub) is a multi-user version of Jupyter Notebooks. In case you are not familiar with Jupyter Notebooks, it is basically an interactive Python console that runs in the browser. JupyterHub also allows running notebooks using different kernels (a Python instance installed in a conda environment, with a set of libraries installed). It works at the cell level and allows editing and executing small sections of code comfortably. JupyterLab also allows creating projects and managing kernels conveniently.
 
-### Ipython (opción 2)
-Una consola de python interactiva con esteroides. La verdad yo lo prefiero a JuptyerHub excepto en muy contados casos. Es super liviana y potente. Viene con magia incluida (%magics). Se puede tunear y escriptear a gusto. Sin duda una de las mejores opciones para correr celdas de python de manera interactiva. Si les digo que hice mi doctorado casi exclusivamente usando esta herramienta no me estaría quedando corto. Sin embargo es una herramienta para la terminal (no tienen entorno gráfico). Si no estás cómodo en la terminal, mejor usar JupyterHub.
+### IPython (option 2)
+An interactive Python console on steroids. Honestly, I prefer it over JupyterHub except in very specific cases. It is super lightweight and powerful. It comes with built-in magic commands (%magics). It can be customized and scripted as desired. Without a doubt, one of the best options to run Python cells interactively. If I tell you that I did my PhD almost exclusively using this tool, I wouldn’t be exaggerating. However, it is a terminal-based tool (it has no graphical environment). If you’re not comfortable with the terminal, it’s better to use JupyterHub.
 
-### Numpy
-Para el primer encuentro (la parte de brigramas) solo hace falta numpy. Es una librería de algebra lineal super potente, que permite operaciones vectorizadas y si uno se da un poco de maña, es posible modelar integramente in LLM usando exclisivamente esta librería. Por comodidad, luego usaremos Torch, pero por ahora, Numpy alcanza. 
+### NumPy
+For the first session (the bigrams part), only NumPy is needed. It is a very powerful linear algebra library that allows vectorized operations, and if one is a bit clever, it is possible to model an entire LLM using only this library. For convenience, we will later use Torch, but for now, NumPy is enough.
 
 ---
-No olvides darme una estrellita en github si este repo te sirvió!
+Don’t forget to give me a star on GitHub if this repo was useful to you!
