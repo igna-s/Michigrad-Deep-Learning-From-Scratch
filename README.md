@@ -47,7 +47,7 @@ Python **3.8+** is recommended.
 
 ### Using the Michigrad Engine
 
-    from Michigrad_from_scratch.engine import Value
+    from michigrad.engine import Value #This is the michigrad library
 
     a = Value(2.0, label='a')
     b = Value(-3.0, label='b')
