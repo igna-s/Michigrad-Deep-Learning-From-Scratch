@@ -1,52 +1,30 @@
-# Michigrad
-A small, educational Autograd engine created by Dr. Joaquin Bogado for his course "Deep Learning Concepts for Text Generative AI".
+# Taller de LLMs
+Repositorio con datasets y ejemplos para el Taller de Large Language Models
+- Primera edición - Jun/2024 (Para LIFIA)
 
-![gatite](images/gatite.png)
+## Como usar este repositorio
+Hacé un fork a tu github para poder hacer Push Requests de manera cómoda. Además, así es más fácil dejar constancia de la autoría de las contribuciones. Luego, `git clone` a una copia local desde tu repo.
+```
+git clone git@github.com:<tu_usuario_de_github>/TallerLLMs.git
+```
+Si queres hacer algún aporte, no dudes en pedirme un Pull Request.
 
-This is a clone of [Andrej Karpathy's micrograd](https://github.com/karpathy/micrograd) and basically shares the same codebase. Some visualization aspects have been improved and tailored for the *"Deep Learning Concepts for Text Generative AI"* course at [Purrfect AI](https://purrfectai.online).
+## Necesario durante el taller (Growing...)
+Aquí iremos detallando las herramientas necesarias para el taller, en cuanto a software y tools copadas que puedan sernos útiles.
 
-## Features
-Michigrad is a gradient calculation engine for scalar values. It allows you to represent numeric values by wrapping them in `Value` objects. These objects support operations analogous to standard numbers, such as addition, multiplication, division, and exponentiation, among others. 
+### Conda Environments
+Vamos a hacer uso extensivo de conda para no contaminar el Python del sistema con todas las librerías que vamos a instalar. Además, conda nos va a permitir trabajar con versiones específicas de algunas librerías, e incluso versiones de Python específicas.
 
-Michigrad allows you to compute the result of applying these operations to `Values` (known as the **forward pass**), but it also generates a graph of operations and dependencies required to reach the result. This graph can be used to calculate the gradients of any `Value` in the graph with respect to the result using the **backpropagation** algorithm, which Michigrad also implements. 
+Mi sugerencia es instalar [Miniconda 3](https://docs.anaconda.com/miniconda/). Hay un [tutorial muy bueno en inglés](https://www.whiteboxml.com/blog/the-definitive-guide-to-python-virtual-environments-with-conda) y [uno mejorable en castellano](https://github.com/jwackito/conda-environments-tutorial/blob/main/Conda%20Environments.md) (se aceptan pull requests) con todo lo que van a necesitar saber sobre instalar, crear y administrar conda virtual envs.
 
-This information can be used to modify the weights $W$ of a neural network with respect to a loss function $L$, with the goal of minimizing the loss and training the neural network.
+### Jupyter Hub/Lab (opción 1)
+[JupyterHub](https://jupyter.org/hub) es una versión multiusuario de los Jupyter Notebooks. Por si no conoces lo Jupyter Notebooks, básicamente es una consola interactiva de Python que funciona desde el navegador. JupyterHub tiene además la posibilidad de correr los notebooks usando diferentes kernels (una instancia de python instalada en un conda env, con una serie de librerías instaladas). Trabaja a nivel de celdas y permite editar y ejecutar secciones pequeñas de código de manera cómoda. El Lab además permite crear proyectos y administrar kernels de manera cómoda.
 
-## Usage
+### Ipython (opción 2)
+Una consola de python interactiva con esteroides. La verdad yo lo prefiero a JuptyerHub excepto en muy contados casos. Es super liviana y potente. Viene con magia incluida (%magics). Se puede tunear y escriptear a gusto. Sin duda una de las mejores opciones para correr celdas de python de manera interactiva. Si les digo que hice mi doctorado casi exclusivamente usando esta herramienta no me estaría quedando corto. Sin embargo es una herramienta para la terminal (no tienen entorno gráfico). Si no estás cómodo en la terminal, mejor usar JupyterHub.
 
-```python
-import numpy as np
-from michigrad.engine import Value
-from michigrad.visualize import show_graph
+### Numpy
+Para el primer encuentro (la parte de brigramas) solo hace falta numpy. Es una librería de algebra lineal super potente, que permite operaciones vectorizadas y si uno se da un poco de maña, es posible modelar integramente in LLM usando exclisivamente esta librería. Por comodidad, luego usaremos Torch, pero por ahora, Numpy alcanza. 
 
-# Weight definition
-np.random.seed(42)
-W0 = Value(np.random.random(), name='W₀')
-W1 = Value(np.random.random(), name='W₁')
-b = Value(np.random.random(), name='b')
-print(W0)  # prints Value(data=0.3745401188473625, grad=0, name=W₀)
-
-# Training dataset definition
-x0 = Value(.5, name="x₀")
-x1 = Value(1., name="x₁")
-y = Value(2., name="y")
-
-# Forward pass
-yhat = x0*W0 + x1*W1 + b
-yhat.name = "ŷ"
-print(yhat)  # prints Value(data=1.8699783076450025, grad=0, name=ŷ)
-
-L = (y - yhat) ** 2
-L.name = "L"
-print(L)  # prints Value(data=0.016905640482857615, grad=0, name=L)
-
-# Backward pass
-L.backward()
-
-print(L)  # prints Value(data=0.016905640482857615, grad=1, name=L)
-print(W0)  # prints Value(data=0.3745401188473625, grad=-0.1300216923549975, name=W₀)
-
-# Update weights in the opposite direction of the gradient
-# (Gradient Descent step implementation would go here)
-
-show_graph(L, rankdir="TB", format="png")
+---
+No olvides darme una estrellita en github si este repo te sirvió!
