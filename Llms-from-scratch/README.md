@@ -1,4 +1,4 @@
-#Teacher notes
+# Teacher notes
 
 # LLM Workshop
 Repository with datasets and examples for the Large Language Models Workshop  
